@@ -18,15 +18,32 @@ class ProcessPodcast implements ShouldQueue
      *
      * @var int
      */
-    public $tries = 25;
+    // public $tries = 25;
 
     /**
      * Максимальное количество разрешенных необработанных исключений.
      *
      * @var int
      */
-    public $maxExceptions = 3;
+    // public $maxExceptions = 3;
 
+    /**
+     * Задать временной предел попыток выполнить задания.
+     *
+     * @return \DateTime
+     */
+    // public function retryUntil()
+    // {
+    //     return now()->addMinutes(5);
+    // }
+
+
+    /**
+     * Количество секунд, по истечении которых уникальная блокировка задания будет снята.
+     *
+     * @var int
+     */
+    // public $uniqueFor = 3600;
 
     protected $message;
     /**

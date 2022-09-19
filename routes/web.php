@@ -18,7 +18,17 @@ use App\Jobs\ProcessPodcast;
 
 // добавление задания в очередь
 Route::get('add', function () {
-    ProcessPodcast::dispatch('Это супер-очередь');
+
+    // // Это задание отправляется в очередь `default` соединения по умолчанию ...
+    // ProcessPodcast::dispatch();
+    // // Это задание отправляется в очередь `emails` соединения по умолчанию ...
+    // ProcessPodcast::dispatch()->onQueue('emails');
+
+    ProcessPodcast::dispatch('Это супер-очередь')
+        // добавить паузу выполнения на 10 минут
+        // ->delay(now()->addMinutes(10))
+    ;
+
     dd(['добавить задание 11']);
     // return view('welcome');
 });
