@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Jobs\ProcessPodcast;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('ss', function () {
 
-    // добавление задания в очередь
-
-    dd(['добавить задание']);
-    
-    return view('welcome');
-
+// добавление задания в очередь
+Route::get('add', function () {
+    ProcessPodcast::dispatch('Это супер-очередь');
+    dd(['добавить задание 11']);
+    // return view('welcome');
 });
 
 Route::get('/', function () {

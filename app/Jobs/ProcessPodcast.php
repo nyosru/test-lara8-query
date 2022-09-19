@@ -14,14 +14,31 @@ class ProcessPodcast implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
+     * Количество попыток выполнения задания.
+     *
+     * @var int
+     */
+    public $tries = 25;
+
+    /**
+     * Максимальное количество разрешенных необработанных исключений.
+     *
+     * @var int
+     */
+    public $maxExceptions = 3;
+
+
+    protected $message;
+    /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
+
 
     /**
      * Execute the job.
@@ -30,6 +47,6 @@ class ProcessPodcast implements ShouldQueue
      */
     public function handle()
     {
-        //
+        \Log::info($this->message);
     }
 }
